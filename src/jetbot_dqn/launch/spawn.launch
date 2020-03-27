@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <group ns="/robot">
+        <param name="tf_prefix" value="jetbot" />
+        <rosparam file="$(find jetbot_control)/config/jetbot_control.yaml" command="load" ns="/robot" />
+
+        <param name="/robot/robot_description" command="$(find xacro)/xacro --inorder '$(find jetbot_description)/urdf/jetbot.xacro'"/>
+        <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+              args="-unpause -urdf -model robot -param robot_description -x -3 -y 0 -z 0
+              -R 0 -P 0 -Y 0" respawn="false" output="screen">
+        </node>
+
+        <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
+            <param name="publish_frequency" type="double" value="30.0" />
+        </node>
+
+        <node name="robot_controller_spawner" pkg="controller_manager" type="spawner"
+              args="--namespace=/robot
+          joint_state_controller
+          joint1_velocity_controller
+          joint2_velocity_controller
+          --shutdown-timeout 3">
+        </node>
+    </group>
+</launch>
