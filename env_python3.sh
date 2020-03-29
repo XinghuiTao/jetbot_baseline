@@ -129,7 +129,7 @@ pip2 install uff-0.6.5-py2.py3-none-any.whl
 # (Optional) Install baselines for reinforcement learning
 pip install tensorflow==1.15rc2
 cd src
-git clone https://github.com/openai/baselines.git
+git clone https://github.com/Tao-wecorp/baselines
 cd baselines
 pip install -e .
 pip install gym

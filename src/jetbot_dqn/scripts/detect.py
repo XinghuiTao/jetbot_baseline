@@ -24,8 +24,8 @@ class Detect(object):
         except CvBridgeError as e:
             print(e)
 
-        bbox, label, conf = cv.detect_common_objects(cv_image, enable_gpu=True, confidence=0.7, model='yolov3-tiny')
-        bbox_image = draw_bbox(cv_image, bbox, label, conf, write_conf=False)
+        # bbox, label, conf = cv.detect_common_objects(cv_image, enable_gpu=True, confidence=0.7, model='yolov3-tiny')
+        # bbox_image = draw_bbox(cv_image, bbox, label, conf, write_conf=False)
         cv2.imshow("Image window", bbox_image)
         cv2.waitKey(1)
 
