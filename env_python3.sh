@@ -127,12 +127,12 @@ cd uff/
 pip2 install uff-0.6.5-py2.py3-none-any.whl
 
 # (Optional) Install baselines for reinforcement learning
-pip install tensorflow==1.15rc2
-cd src
+pip install tensorflow-gpu==1.14 pandas==1.0.3 matplotlib==3.2.1 pytest==5.4.1 filelock==3.0.12
+cd modules
 git clone https://github.com/Tao-wecorp/baselines
 cd baselines
 pip install -e .
-pip install gym
+pytest
 cd ..
 
 catkin_make -DPYTHON_EXECUTABLE:FILEPATH=~/.virtualenvs/py3venv/bin/python
